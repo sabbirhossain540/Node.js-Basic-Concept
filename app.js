@@ -12,15 +12,29 @@ const server = http.createServer((req,res) => {
     if(url === '/'){
         res.write('<html>');
         res.write('<head><title>Hello World</title></head>');
-        res.write('<body><form action="/message" method = "POST"><input type="text" name="txt"><input type="submit" name="submit"></form></body>');
+        res.write('<body><form action="/message" method = "POST"><input type="text" name="txt"><input type="submit"></form></body>');
         res.write('</html>');
         return res.end();
     }
     if(url === '/message' && method === 'POST'){
-        fs.writeFileSync('message.txt','Bismillahir Rahmanir Rahim');
-        res.statusCode = 302;
-        res.setHeader('Location','/');
-        return res.end();
+        const body = [];
+        req.on('data',(chunk)=>{
+            console.log(chunk);
+            body.push(chunk);
+        });
+
+        req.on('end',()=>{
+            const parseBody = Buffer.concat(body).toString();
+            const message = parseBody.split('=')[1];
+            fs.writeFile('message.txt',message,(err)=>{
+                res.statusCode = 302;
+                res.setHeader('Location','/');
+                return res.end();
+            });
+
+        });
+        
+        
     }
 
 
