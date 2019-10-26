@@ -1,0 +1,20 @@
+{
+  "name": "node.js-basic-concept",
+  "version": "1.0.0",
+  "description": "Node Js Basic (Start Date: 26/10/2019)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sabbirhossain540/Node.js-Basic-Concept.git"
+  },
+  "author": "Md Sabbir Hossain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sabbirhossain540/Node.js-Basic-Concept/issues"
+  },
+  "homepage": "https://github.com/sabbirhossain540/Node.js-Basic-Concept#readme"
+}
