@@ -9,3 +9,4 @@ Promiti Computer And Network (PVT) Ltd
 1. npm init 
 2. npm install nodemon --save-dev 
 3. npm install --save express
+4. npm install --save body-parser
