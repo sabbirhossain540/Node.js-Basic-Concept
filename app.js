@@ -1,21 +1,24 @@
 
 const express = require('express');
 const app = express();
+const path = require('path');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(path.join(__dirname,'public')));//Static ly Use any location using this process
+
 
 const adminRoute = require('./routes/admin');
 const shopAdmin = require('./routes/shop');
+const rootPath = require('./utill/path');
 
-
-
-app.use('/admin', adminRoute);
+app.use('/admin',adminRoute);
 app.use(shopAdmin);
 
 /* Use for Unregister URL Request */
 app.use((req, res, next) => {
-    res.status(404).send('<h1>Page Not Found</h1>');
+    //res.status(404).send('<h1>Page Not Found</h1>');
+    res.sendFile(path.join(rootPath,'views','404.html'));
 });
 
 
