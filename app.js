@@ -8,11 +8,15 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname,'public')));//Static ly Use any location using this process
 
 
-const adminRoute = require('./routes/admin');
+app.set('view engine', 'pug') // register the template engine
+app.set('views', 'views') // specify the views directory
+
+
+const adminData = require('./routes/admin');
 const shopAdmin = require('./routes/shop');
 const rootPath = require('./utill/path');
 
-app.use('/admin',adminRoute);
+app.use('/admin',adminData.routes);
 app.use(shopAdmin);
 
 /* Use for Unregister URL Request */
