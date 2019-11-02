@@ -11,7 +11,15 @@ router.get('/',(req, res, next) => {
     //res.sendFile(path.join(__dirname,'../','views','shop.html'));
     //res.sendFile(path.join(rootPath,'views','shop.html')); // When We use Html File 
     const products = adminData.products;
-    res.render('shop', {prods: products, docTitle: 'Shop'});
+    //res.render('shop', {prods: products, docTitle: 'Shop', path:'/'}); For PUG Structure
+    res.render('shop', {
+        prods: products, 
+        docTitle: 'Shop', 
+        path:'/', 
+        hasProduct: products.length > 0,
+        formCss:true,
+        activeShop:true
+    }); // For Handleber Structure
 });
 
 module.exports = router;

@@ -5,10 +5,24 @@ const path = require('path');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:false}));
-app.use(express.static(path.join(__dirname,'public')));//Static ly Use any location using this process
+app.use(express.static(path.join(__dirname,'public')));//Staticly Use any location using this process
+/*
+Handlebar or External view Engine Implementation Process
+const expressHbs = require('express-handlebars');
+app.engine(
+    "hbs",
+    expressHbs({
+      extname: "hbs",
+      defaultLayout: "main-layouts",
+      layoutsDir: "views/layouts"
+    })
+  );
+  app.set('view engine', 'hbs');
+*/
 
 
-app.set('view engine', 'pug') // register the template engine
+app.set('view engine', 'ejs');
+//app.set('view engine', 'pug') // register the template engine
 app.set('views', 'views') // specify the views directory
 
 
@@ -22,7 +36,8 @@ app.use(shopAdmin);
 /* Use for Unregister URL Request */
 app.use((req, res, next) => {
     //res.status(404).send('<h1>Page Not Found</h1>');
-    res.sendFile(path.join(rootPath,'views','404.html'));
+    //res.sendFile(path.join(rootPath,'views','404.html'));
+    res.status(404).render('404',{docTitle:'404'});
 });
 
 
