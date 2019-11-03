@@ -26,21 +26,16 @@ app.set('view engine', 'ejs');
 app.set('views', 'views') // specify the views directory
 
 
-const adminData = require('./routes/admin');
+const adminRoute = require('./routes/admin');
 const shopAdmin = require('./routes/shop');
 const rootPath = require('./utill/path');
+const errorController = require('./controllers/error');
 
-app.use('/admin',adminData.routes);
+app.use('/admin',adminRoute);
 app.use(shopAdmin);
 
 /* Use for Unregister URL Request */
-app.use((req, res, next) => {
-    //res.status(404).send('<h1>Page Not Found</h1>');
-    //res.sendFile(path.join(rootPath,'views','404.html'));
-    res.status(404).render('404',{docTitle:'404'});
-});
-
-
+app.use('',errorController.get404);
 
 
 app.listen(3000);
