@@ -21,6 +21,8 @@ app.engine(
 */
 
 
+
+
 app.set('view engine', 'ejs');
 //app.set('view engine', 'pug') // register the template engine
 app.set('views', 'views') // specify the views directory
