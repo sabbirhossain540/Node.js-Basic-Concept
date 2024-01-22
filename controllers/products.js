@@ -21,7 +21,7 @@ exports.getProductList = (req, res, next) => {
     //res.send('<h1>Welcome To Express.js</h1>');
     //res.sendFile(path.join(__dirname,'../','views','shop.html'));
     //res.sendFile(path.join(rootPath,'views','shop.html')); // When We use Html File 
-
+    //test case
     //res.render('shop', {prods: products, docTitle: 'Shop', path:'/'}); For PUG Structure
     res.render('shop', {
         prods: products, 
